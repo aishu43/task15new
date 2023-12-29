@@ -1,0 +1,211 @@
+1) Explain Difference between Selenium IDE ,Selenium Webdriver, and Selenium Grid?
+Selenium IDE:
+ Selenium IDE (Integrated Development Environment): 
+ Selenium IDE is a simple and user-friendly tool primarily used for recording and playing back interactions with a web application.
+ .It has the record and playback feature.
+ .Selenium IDE requires no server to start execution of test cases. 
+ .It can be used for testing only in Firefox. It is based on Selenese which is a procedural language.
+ .Elements cannot be identified.
+ .Cannot handle alerts, Mouse Actions, navigation and dropdown.
+ .Cannot perform iPhone/Android testing.
+.Fast [comes as a Firefox plugin]. It interacts with the browser directly.
+ .Derived from JavaScript. UI interface available to create scripts.
+ .Selenium IDE only has absolute x-path.
+
+Selenium WebDriver:
+
+Selenium WebDriver is a tool used for automating web applications. 
+It provides a programming interface to create and execute test cases using various programming languages.
+
+Selenium Grid:
+
+Selenium Grid is designed to facilitate parallel and distributed testing across multiple machines and browsers simultaneously.
+
+· It allows you to run your tests on different operating systems, browsers, and versions in a distributed environment, reducing the time required for testing.
+
+· With Selenium Grid, you can set up a hub and multiple nodes, where the hub coordinates the test distribution, and the nodes execute the tests on different configurations.
+
+· This is particularly useful for cross-browser and cross-platform testing, ensuring that your web application works consistently across various environments.
+
+2)Write a Selenium script in Java to open Google and search for “Selenium Browser Driver”.
+package Google;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class OpenPage {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     ChromeDriver driver =new ChromeDriver();
+     
+     driver.manage().window().maximize();
+     
+     driver.get("https://www.google.com/");
+     WebElement Keys=driver.findElement(By.id("APjFqb"));
+     Keys.sendKeys("Selenium");
+     Keys.submit();
+    try {
+		Thread.sleep(3000) ;
+	} catch (InterruptedException e) {
+		e.printStackTrace();
+	}
+    driver.quit();
+	}
+
+}
+
+
+3)What is Selenium?
+Selenium is an open-source testing tool used for automating web browsers. 
+It provides a suite of tools for testing web applications across various platforms, browsers, and programming languages.
+
+Selenium can be easily deployed on platforms such as Windows, Linux, Solaris and Macintosh. Moreover, it supports OS (Operating System) for mobile applications like iOS, windows mobile and android.
+
+· Languages supported by Selenium include C#, Java, Perl, PHP, Python and Ruby.
+
+· Browsers supported by Selenium include Internet Explorer, Mozilla Firefox, Google Chrome and Safari.
+
+Uses of Selenium in Automation Testing: -
+
+a. Automating User Interactions: Selenium allows you to automate user interactions with web applications just as a human user would. You can simulate actions like clicking buttons, entering text, selecting options, navigating through pages, and more.
+
+b. Cross-Browser Testing: Web applications are accessed using different web browsers (like Chrome, Firefox, Safari, etc.), each with its own quirks and behaviors. Selenium helps you test your application’s compatibility across various browsers, ensuring consistent functionality.
+
+c. Functional Testing: Selenium is often used to perform functional testing, where the goal is to verify that the application’s features and functionalities work as expected. Test cases are written to simulate different scenarios and verify that the application responds correctly.
+
+d. Regression Testing: When new code is added to an application, there’s a risk of introducing bugs that might affect existing functionalities. Selenium can automate the process of running regression tests to ensure that new changes haven’t broken previously working parts of the application.
+
+e. Performance Testing: While not the primary tool for performance testing, Selenium can be used to simulate user interactions under load, helping to identify performance bottlenecks and issues.
+
+f. Data-Driven Testing: Selenium allows you to perform data-driven testing, where you can run the same test with different sets of data. This is useful for testing various scenarios and inputs.
+
+g. Parallel and Distributed Testing: With tools like Selenium Grid, you can run tests on multiple machines and browsers simultaneously. These speeds up the testing process and allows you to cover more test cases efficiently.
+
+h. Integration with Continuous Integration (CI) Tools: Selenium can be integrated with CI tools like Jenkins, Travis CI, and others. This enables automatic execution of tests whenever there’s a code change, providing quick feedback to the development team.
+
+i. Custom Test Frameworks: Selenium provides the flexibility to design custom test frameworks tailored to your project’s requirements, allowing you to create reusable components and enhance test maintenance.
+
+
+4) What are all Browser Drivers used in Selenium.
+
+· Browser drivers are software components that enable Selenium WebDriver to interact with different browsers.
+
+· They act as a bridge between the browser and the WebDriver commands. Each browser has a specific driver that supports its features and functionality.
+
+· Some of the browser drivers used in Selenium are:
+
+A. ChromeDriver: for Google Chrome browser
+
+B. EdgeDriver: for Microsoft Edge browser
+
+C. FirefoxDriver: for Mozilla Firefox browser
+
+D. SafariDriver: for Apple Safari browser
+
+E. InternetExplorerDriver: for Internet Explorer browser
+
+
+
+5)What are the Steps to Create a Simple Web Driver Script. Explain with code.
+
+Step1: Create a New Java Maven Project.
+
+Step 2: Add Selenium WebDriver Library
+
+Add the Selenium WebDriver library (JAR files) to your project. You can usually download the WebDriver JAR files from the Selenium website or use a build tool like Maven or Gradle to manage dependencies.
+
+Step3: Create a web driver instance, such as
+
+WebDriver driver = new ChromeDriver();
+
+Step4: Import the necessary packages, such as
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+Step5: Navigate to the required web page, such as
+
+driver.get(“https://www.google.com/");
+
+Step6: Locate the relevant web element, such as
+
+WebElement open = driver.findElement(By.name(“q”));
+
+Step7: Perform action on the web element, such as
+
+open.sendKeys(“Guvi”);
+
+Step8: Submit the Send keys query such as
+
+open.submit();
+
+Step9: End the web driver session, such as
+
+driver.close();
+
+Example:
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Question5 {
+
+public static void main(String[] args) throws Exception {
+
+WebDriver driver = new ChromeDriver();
+
+driver.manage().window().maximize();
+
+// To Navigate to the google URL
+
+driver.get(“https://www.google.com/");
+
+// By getTitle method we can get the title of the Page
+
+System.out.println(driver.getTitle());
+
+// Finding the Search box Element by name
+
+WebElement open = driver.findElement(By.name(“q”));
+
+// Sleep for 2sec
+
+Thread.sleep(2000);
+
+// Sending the Query of Guvi in Search Option
+
+open.sendKeys(“Guvi”);
+
+//// Sleep for 2sec
+
+Thread.sleep(2000);
+
+// Submitting the Query
+
+open.submit();
+
+Thread.sleep(2000);
+
+driver.manage().window().minimize();
+
+
+driver.close();
+
+}
+
+}
+
+
+
+
+
